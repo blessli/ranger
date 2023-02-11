@@ -27,3 +27,33 @@ func HandleUserInfo(c *gin.Context) {
 	}
 	c.JSON(200, rsp)
 }
+
+func HandleUserList(c *gin.Context) {
+	logx.Info("HandleUserList start")
+	req := &services.ListUserReq{}
+	if err := c.ShouldBindJSON(req); err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+	rsp, err := loginService.UserList(req)
+	if err != nil {
+		c.JSON(500, err.Error())
+		return
+	}
+	c.JSON(200, rsp)
+}
+
+func HandleRoleList(c *gin.Context) {
+	logx.Info("HandleRoleList start")
+	req := &services.ListRoleReq{}
+	if err := c.ShouldBindJSON(req); err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+	rsp, err := loginService.RoleList(req)
+	if err != nil {
+		c.JSON(500, err.Error())
+		return
+	}
+	c.JSON(200, rsp)
+}

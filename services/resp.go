@@ -64,3 +64,58 @@ type MenuListTree struct {
 	VueIcon      string `json:"vue_icon"`
 	VueRedirect  string `json:"vue_redirect"`
 }
+
+type ListUserResp struct {
+	Code     string          `json:"code"`
+	Message  string          `json:"message"`
+	Current  int64           `json:"current,default=1"`
+	Data     []*ListUserData `json:"data"`
+	PageSize int64           `json:"pageSize,default=20"`
+	Success  bool            `json:"success"`
+	Total    int64           `json:"total"`
+}
+type ListUserData struct {
+	Id             int64  `json:"id"`             // 编号
+	Name           string `json:"name"`           // 用户名
+	NickName       string `json:"nickName"`       // 昵称
+	Avatar         string `json:"avatar"`         // 头像
+	Password       string `json:"password"`       // 密码
+	Salt           string `json:"salt"`           // 加密盐
+	Email          string `json:"email"`          // 邮箱
+	Mobile         string `json:"mobile"`         // 手机号
+	Status         int64  `json:"status"`         // 状态  0：禁用   1：正常
+	DeptId         int64  `json:"deptId"`         // 机构ID
+	CreateBy       string `json:"createBy"`       // 创建人
+	CreateTime     string `json:"createTime"`     // 创建时间
+	LastUpdateBy   string `json:"lastUpdateBy"`   // 更新人
+	LastUpdateTime string `json:"lastUpdateTime"` // 更新时间
+	DelFlag        int64  `json:"delFlag"`        // 是否删除  -1：已删除  0：正常
+	JobId          int64  `json:"jobId"`
+	RoleId         int64  `json:"roleId"`
+	RoleName       string `json:"roleName"`
+	JobName        string `json:"jobName"`
+	DeptName       string `json:"deptName"`
+}
+
+type ListRoleData struct {
+	Id             int64  `json:"id"`             // 编号
+	Name           string `json:"name"`           // 角色名称
+	Remark         string `json:"remark"`         // 备注
+	CreateBy       string `json:"createBy"`       // 创建人
+	CreateTime     string `json:"createTime"`     // 创建时间
+	LastUpdateBy   string `json:"lastUpdateBy"`   // 更新人
+	LastUpdateTime string `json:"lastUpdateTime"` // 更新时间
+	DelFlag        int64  `json:"delFlag"`        // 是否删除  -1：已删除  0：正常
+	Label          string `json:"label"`          // 编号
+	Value          string `json:"value"`          // 角色名称
+	Status         int64  `json:"status"`         // 角色名称
+}
+type ListRoleResp struct {
+	Code     string          `json:"code"`
+	Message  string          `json:"message"`
+	Current  int64           `json:"current,default=1"`
+	Data     []*ListRoleData `json:"data"`
+	PageSize int64           `json:"pageSize,default=20"`
+	Success  bool            `json:"success"`
+	Total    int64           `json:"total"`
+}

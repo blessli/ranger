@@ -17,6 +17,7 @@ import (
 type loginService struct {
 	UserModel *dao.SysUserModel
 	MenuModel *dao.SysMenuModel
+	RoleModel *dao.SysRoleModel
 }
 
 func NewLoginService() *loginService {
@@ -24,6 +25,7 @@ func NewLoginService() *loginService {
 	return &loginService{
 		UserModel: dao.NewSysUserModel(sqlConn),
 		MenuModel: dao.NewSysMenuModel(sqlConn),
+		RoleModel: dao.NewSysRoleModel(sqlConn),
 	}
 }
 
